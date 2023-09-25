@@ -1,0 +1,111 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "eslint-config-prettier",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked",
+    "plugin:import/recommended",
+    "plugin:jsx-a11y/recommended",
+    "next",
+    "next/core-web-vitals",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "project": "./tsconfig.json",
+    "extraFileExtensions": ".json"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "plugins": [
+    "react",
+    "prettier",
+    "@typescript-eslint",
+    "autofix",
+    "react-hooks",
+    "sort-keys-fix"
+  ],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "sort-keys-fix/sort-keys-fix": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts?(x)"],
+      "rules": {
+        "prettier/prettier": ["warn"],
+        "react/react-in-jsx-scope": "off",
+        "spaced-comment": "error",
+        "quotes": ["error", "double"],
+        "no-console": "warn",
+        "no-redeclare": "warn",
+        "react/display-name": "error",
+        "react/jsx-key": "warn",
+        "arrow-body-style": ["error", "always"],
+        "react/self-closing-comp": [
+          "error",
+          { "component": true, "html": true }
+        ],
+        "autofix/no-unused-vars": [
+          "warn",
+          {
+            "argsIgnorePattern": "^_",
+            "ignoreRestSiblings": true,
+            "destructuredArrayIgnorePattern": "^_"
+          }
+        ],
+        "@typescript-eslint/consistent-type-imports": [
+          "error",
+          {
+            "prefer": "type-imports"
+          }
+        ],
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              "type",
+              "builtin",
+              "object",
+              "external",
+              "internal",
+              "parent",
+              "sibling",
+              "index"
+            ],
+            "pathGroups": [
+              {
+                "pattern": "@/**/**",
+                "group": "parent",
+                "position": "before"
+              }
+            ],
+            "alphabetize": { "order": "asc" },
+            "newlines-between": "always"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["**/types/**/*.ts"], // Adjust the glob pattern to match your "types" folder structure
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off" // Disable the rule for files in the "types" folder
+      }
+    }
+  ]
+}
