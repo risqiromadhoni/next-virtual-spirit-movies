@@ -1,27 +1,74 @@
 {
   "name": "next-virtual-spirit-movies",
+  "description": "Watch movies with web-based applications",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "author": {
+    "name": "Risqi Romadhoni",
+    "email": "risqi.romadhoni96@gmail.com",
+    "url": "https://risqiromadhoni.github.io"
+  },
+  "repository": {
+    "type": "git",
+    "directory": "git@github.com:risqiromadhoni/next-virtual-spirit-movies.git",
+    "url": "https://next-virtual-spirit-movies.vercel.app"
+  },
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "prepare": "husky install",
+    "format:check": "prettier --check ./ --cache",
+    "format:write": "prettier --write ./ --cache"
   },
   "dependencies": {
+    "next": "latest",
     "react": "latest",
-    "react-dom": "latest",
-    "next": "latest"
+    "react-dom": "latest"
   },
   "devDependencies": {
-    "typescript": "latest",
-    "@types/react": "latest",
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@types/eslint": "^8.44.3",
     "@types/node": "latest",
+    "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
     "autoprefixer": "latest",
+    "eslint": "^8.50.0",
+    "eslint-config-next": "^13.5.3",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-autofix": "^1.1.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
     "postcss": "latest",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.4",
     "tailwindcss": "latest",
-    "eslint": "latest",
-    "eslint-config-next": "latest"
+    "typescript": "latest"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "volta": {
+    "node": "18.18.0"
+  },
+  "packageManager": "pnpm@8.7.0",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "pnpm run lint:fix",
+      "pnpm run format:write"
+    ]
   }
 }
